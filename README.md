@@ -59,7 +59,7 @@ git init
 git add .
 git commit -m "Initial portfolio site"
 git branch -M main
-git remote add origin https://github.com/<your-username>/portfolio.git
+git remote add origin https://github.com/devadharshan27112008-lgtm/portfolio.git
 git push -u origin main
 ```
 
@@ -78,3 +78,7 @@ Since you already have deeptrck on Vercel, this will feel familiar:
 Vercel will give you a live URL like `portfolio-yourname.vercel.app` — you can rename it or attach a custom domain in the project's Vercel settings.
 
 Every time you `git push` to `main`, Vercel automatically redeploys.
+
+git add .
+git commit -m "describe your change"
+git push
