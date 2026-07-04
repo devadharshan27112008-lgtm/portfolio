@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>N Devadharshan — Robotics &amp; Embedded Systems</title>
+<meta name="description" content="Portfolio of N Devadharshan — ECE aspirant, robotics enthusiast, Arduino &amp; ESP32 developer.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230a0e14%22/><path d=%22M20 50h20M60 50h20M50 20v20M50 60v20%22 stroke=%22%2300e5ff%22 stroke-width=%226%22/><circle cx=%2250%22 cy=%2250%22 r=%2210%22 fill=%22none%22 stroke=%22%2339ff88%22 stroke-width=%226%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+// Defined early (before any images) so onerror="smartImage(this)" always works,
+// even for images that fail instantly on page load.
+function smartImage(img) {
+  var exts = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG', 'WEBP'];
+  var tried = (img.getAttribute('data-tried') || '').split(',').filter(Boolean);
+  var base = img.getAttribute('data-base');
+  for (var i = 0; i < exts.length; i++) {
+    if (tried.indexOf(exts[i]) === -1) {
+      tried.push(exts[i]);
+      img.setAttribute('data-tried', tried.join(','));
+      img.src = base + '.' + exts[i];
+      return;
+    }
+  }
+  if (img.getAttribute('data-fallback') === 'hide') {
+    img.style.display = 'none';
+  } else if (img.parentElement) {
+    img.parentElement.classList.add('no-photo');
+  }
+}
+</script>
+
+</head>
+<body>
+
+<!-- background circuit canvas -->
+<canvas id="circuit-bg"></canvas>
+
+<!-- continuous PCB trace running through the page, connecting each section like real schematic wiring -->
+<svg id="spine" width="40" viewBox="0 0 40 100" preserveAspectRatio="none" aria-hidden="true">
+  <line x1="20" y1="0" x2="20" y2="100" stroke="url(#spineGrad)" stroke-width="1.5"/>
+  <defs>
+    <linearGradient id="spineGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.05"/>
+      <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#39ff88" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="#hero">
+      <span class="logo-bracket">&lt;</span>ND<span class="logo-bracket">/&gt;</span>
+    </a>
+    <nav id="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+      <a href="assets/resume.pdf" class="nav-resume" id="nav-resume-link" download>Resume ↓</a>
+    </nav>
+    <button id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="chip-label">// SYSTEM BOOT — PROFILE.INIT</p>
+        <h1>N&nbsp;DEVADHARSHAN</h1>
+        <p class="hero-role">
+          <span class="pin">●</span> Student &amp; Future Robotics Engineer
+          <span class="dot-sep">·</span> Arduino Developer
+          <span class="dot-sep">·</span> Curious Problem Solver
+        </p>
+        <p class="hero-bio">
+          Aspiring ECE engineer from Tiruvannamalai, building things with microcontrollers,
+          circuits and code. I like taking ideas from breadboard to working prototype —
+          currently exploring robotics, embedded C, and IoT with Arduino &amp; ESP32.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://www.linkedin.com/in/devadharshan27/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+          <a href="https://instagram.com/_ferrous_os._" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+          <a href="https://github.com/" target="_blank" rel="noopener" id="hero-github" aria-label="GitHub">GitHub</a>
+          <a href="mailto:devadharshan27112008@gmail.com" aria-label="Email">Email</a>
+          <a href="https://instagram.com/ferrous_labs" target="_blank" rel="noopener" aria-label="Ferrous Labs Instagram">Ferrous Labs</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="chip" id="hero-chip">
+          <div class="chip-pins chip-pins-top"></div>
+          <div class="chip-pins chip-pins-bottom"></div>
+          <div class="chip-pins chip-pins-left"></div>
+          <div class="chip-pins chip-pins-right"></div>
+          <div class="chip-face">
+            <span class="chip-id">U1</span>
+            <span class="chip-name">ND‑MCU</span>
+            <span class="chip-sub">ECE · ROBOTICS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span></span>scroll</div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section">
+    <div class="section-head">
+      <span class="designator">U2</span>
+      <h2>About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo">
+        <div class="photo-frame">
+          <img src="assets/images/profile.jpg" data-base="assets/images/profile" data-tried="jpg" alt="N Devadharshan" onerror="smartImage(this)">
+          <div class="photo-fallback">
+            <svg viewBox="0 0 120 120" width="72" height="72" aria-hidden="true">
+              <circle cx="60" cy="60" r="56" fill="none" stroke="#00e5ff" stroke-width="2" stroke-dasharray="6 6"/>
+              <circle cx="60" cy="42" r="18" fill="none" stroke="#39ff88" stroke-width="3"/>
+              <path d="M28 96c6-20 22-30 32-30s26 10 32 30" fill="none" stroke="#39ff88" stroke-width="3"/>
+            </svg>
+            <p>photo.jpg<br><span>add your image →</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p>
+          I'm N Devadharshan, currently based in <strong>Tiruvannamalai</strong>, and I recently completed
+          my 12th standard at Maharishi Vidya Mandir, Tiruvannamalai (2025–2026). I'm planning to pursue
+          a college degree in <strong>Electronics and Communication Engineering (ECE)</strong> in Tamil Nadu,
+          with a focus on robotics.
+        </p>
+        <p>
+          My interest lies in robotics, building hands-on projects, working with circuits, and coding
+          microcontrollers. I enjoy the process of turning a rough idea into a working prototype —
+          from soldering a circuit to writing the firmware that brings it to life.
+        </p>
+        <p>
+          I also run <strong>Ferrous Labs</strong>, where I build robotics projects with school
+          students — follow along on
+          <a href="https://instagram.com/ferrous_labs" target="_blank" rel="noopener">Instagram</a>
+          or reach out at
+          <a href="mailto:ferrouslabsofficial@gmail.com">ferrouslabsofficial@gmail.com</a>.
+        </p>
+        <div class="about-facts">
+          <div class="fact"><span class="fact-label">Location</span><span class="fact-value">Tiruvannamalai, TN</span></div>
+          <div class="fact"><span class="fact-label">Focus</span><span class="fact-value">Robotics · Embedded Systems</span></div>
+          <div class="fact"><span class="fact-label">Education</span><span class="fact-value">12th — Maharishi Vidya Mandir (2025–26)</span></div>
+          <div class="fact"><span class="fact-label">Next</span><span class="fact-value">B.E./B.Tech ECE, Tamil Nadu</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="section">
+    <div class="section-head">
+      <span class="designator">U3</span>
+      <h2>Skills &amp; Tools</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Languages</h3>
+        <ul class="tag-list">
+          <li>C</li><li>C++</li><li>Python</li><li>Embedded C</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Microcontrollers &amp; Boards</h3>
+        <ul class="tag-list">
+          <li>Arduino</li><li>ESP32</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Areas of Interest</h3>
+        <ul class="tag-list">
+          <li>Robotics</li><li>Circuit Design</li><li>IoT</li><li>Prototyping</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section id="experience" class="section">
+    <div class="section-head">
+      <span class="designator">U4</span>
+      <h2>Experience</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-node"></div>
+        <div class="timeline-content">
+          <p class="timeline-org">PRAY LABS, Tiruvannamalai</p>
+          <p class="timeline-role">Intern</p>
+          <p class="timeline-desc">Completed an internship gaining hands-on exposure to robotics and electronics fundamentals.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-node"></div>
+        <div class="timeline-content">
+          <p class="timeline-org">School Robotics Expo</p>
+          <p class="timeline-role">Alumni Contributor</p>
+          <p class="timeline-desc">Returned to my school's Robotics Expo as an alumnus to showcase projects and support current students.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-node"></div>
+        <div class="timeline-content">
+          <p class="timeline-org">Self-directed Learning</p>
+          <p class="timeline-role">Robotics Fundamentals</p>
+          <p class="timeline-desc">Completed foundational robotics courses on Udemy and Coursera, building a base in electronics and control systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="section">
+    <div class="section-head">
+      <span class="designator">U5</span>
+      <h2>Projects</h2>
+    </div>
+    <div class="projects-grid">
+
+      <a class="project-card" href="projects/moon-rover.html">
+        <div class="project-thumb" data-icon="rover">
+          <div class="gallery-strip" id="rover-gallery">
+            <img src="assets/projects/moon-rover/moon-rover-1.png" data-base="assets/projects/moon-rover/moon-rover-1" data-fallback="hide" alt="Moon Rover project photo 1" onerror="smartImage(this)">
+          </div>
+          <div class="thumb-placeholder">
+            <svg viewBox="0 0 100 60" width="100%" aria-hidden="true">
+              <ellipse cx="50" cy="48" rx="38" ry="6" fill="#39ff8822"/>
+              <circle cx="22" cy="42" r="8" fill="none" stroke="#39ff88" stroke-width="2"/>
+              <circle cx="78" cy="42" r="8" fill="none" stroke="#39ff88" stroke-width="2"/>
+              <circle cx="50" cy="42" r="8" fill="none" stroke="#39ff88" stroke-width="2"/>
+              <rect x="30" y="18" width="40" height="18" rx="3" fill="none" stroke="#00e5ff" stroke-width="2"/>
+              <line x1="50" y1="18" x2="50" y2="6" stroke="#00e5ff" stroke-width="2"/>
+              <circle cx="50" cy="6" r="3" fill="#00e5ff"/>
+            </svg>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">ESP32 · WIFI</p>
+          <h3>Moon Rover</h3>
+          <p>A small-scale rover build inspired by lunar exploration rovers — chassis, motor control, and
+            navigation logic built from scratch as a hands-on robotics project.</p>
+          <p class="project-link-hint">FULL BUILD LOG →</p>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/bluetooth-car.html">
+        <div class="project-thumb" data-icon="car">
+          <div class="thumb-placeholder">
+            <svg viewBox="0 0 100 60" width="100%" aria-hidden="true">
+              <rect x="18" y="24" width="64" height="18" rx="4" fill="none" stroke="#00e5ff" stroke-width="2"/>
+              <circle cx="32" cy="44" r="7" fill="none" stroke="#39ff88" stroke-width="2"/>
+              <circle cx="68" cy="44" r="7" fill="none" stroke="#39ff88" stroke-width="2"/>
+              <path d="M40 24 L48 12 L64 12 L70 24" fill="none" stroke="#00e5ff" stroke-width="2"/>
+              <circle cx="76" cy="18" r="2.5" fill="#ff8a3d"/>
+            </svg>
+          </div>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">ARDUINO · BLUETOOTH</p>
+          <h3>Bluetooth-Controlled Arduino Car</h3>
+          <p>A car built on an Arduino platform, controlled wirelessly over Bluetooth using a mobile app —
+            covering motor drivers, wireless comms, and basic control logic.</p>
+          <p class="project-link-hint">FULL BUILD LOG →</p>
+        </div>
+      </a>
+
+      <article class="project-card project-card-more">
+        <div class="project-thumb thumb-more">
+          <svg viewBox="0 0 100 60" width="60" aria-hidden="true">
+            <line x1="30" y1="30" x2="70" y2="30" stroke="#00e5ff" stroke-width="3"/>
+            <line x1="50" y1="10" x2="50" y2="50" stroke="#00e5ff" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <p class="project-tag">COMING SOON</p>
+          <h3>More builds in progress</h3>
+          <p>New projects get added here as they're finished — check back or follow along on GitHub and Instagram.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATES ============ -->
+  <section id="certificates" class="section">
+    <div class="section-head">
+      <span class="designator">U6</span>
+      <h2>Certificates</h2>
+    </div>
+    <div class="cert-grid">
+
+      <button type="button" class="cert-card cert-card--portrait" data-cert-src="assets/certs/internship-pray-labs.jpg" data-cert-title="Internship Completion Letter — PRAY LABS">
+        <div class="cert-thumb cert-thumb--portrait">
+          <img src="assets/certs/internship-pray-labs.jpg" alt="Internship completion letter from PRAY LABS" onerror="this.style.display='none'">
+          <div class="cert-thumb-fallback">
+            <svg viewBox="0 0 100 130" width="70" aria-hidden="true">
+              <rect x="6" y="6" width="88" height="118" rx="4" fill="none" stroke="#00e5ff" stroke-width="2"/>
+              <line x1="20" y1="34" x2="80" y2="34" stroke="#39ff88" stroke-width="2"/>
+              <line x1="20" y1="50" x2="80" y2="50" stroke="#1c2833" stroke-width="2"/>
+              <line x1="20" y1="60" x2="80" y2="60" stroke="#1c2833" stroke-width="2"/>
+              <line x1="20" y1="70" x2="80" y2="70" stroke="#1c2833" stroke-width="2"/>
+              <circle cx="50" cy="100" r="12" fill="none" stroke="#ff8a3d" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+        <div class="cert-card-body">
+          <p class="cert-tag">VIEW CERTIFICATE →</p>
+          <h3>Internship Completion Letter</h3>
+          <p class="cert-org">PRAY LABS, Tiruvannamalai</p>
+        </div>
+      </button>
+
+      <button type="button" class="cert-card cert-card--landscape" data-cert-src="assets/certs/udemy-robotics.jpg" data-cert-title="Basic Robotics Course — Udemy">
+        <div class="cert-thumb cert-thumb--landscape">
+          <img src="assets/certs/udemy-robotics.jpg" alt="Basic Robotics Course certificate from Udemy" onerror="this.style.display='none'">
+          <div class="cert-thumb-fallback">
+            <svg viewBox="0 0 140 100" width="80" aria-hidden="true">
+              <rect x="6" y="6" width="128" height="88" rx="4" fill="none" stroke="#00e5ff" stroke-width="2"/>
+              <line x1="24" y1="30" x2="116" y2="30" stroke="#39ff88" stroke-width="2"/>
+              <line x1="24" y1="44" x2="90" y2="44" stroke="#1c2833" stroke-width="2"/>
+              <circle cx="108" cy="66" r="14" fill="none" stroke="#ff8a3d" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+        <div class="cert-card-body">
+          <p class="cert-tag">VIEW CERTIFICATE →</p>
+          <h3>Basic Robotics Course</h3>
+          <p class="cert-org">Udemy</p>
+        </div>
+      </button>
+
+      <button type="button" class="cert-card cert-card--landscape" data-cert-src="assets/certs/coursera-robotics.jpg" data-cert-title="Basic Robotics Course — Coursera">
+        <div class="cert-thumb cert-thumb--landscape">
+          <img src="assets/certs/coursera-robotics.jpg" alt="Basic Robotics Course certificate from Coursera" onerror="this.style.display='none'">
+          <div class="cert-thumb-fallback">
+            <svg viewBox="0 0 140 100" width="80" aria-hidden="true">
+              <rect x="6" y="6" width="128" height="88" rx="4" fill="none" stroke="#00e5ff" stroke-width="2"/>
+              <line x1="24" y1="30" x2="116" y2="30" stroke="#39ff88" stroke-width="2"/>
+              <line x1="24" y1="44" x2="90" y2="44" stroke="#1c2833" stroke-width="2"/>
+              <circle cx="108" cy="66" r="14" fill="none" stroke="#ff8a3d" stroke-width="2"/>
+            </svg>
+          </div>
+        </div>
+        <div class="cert-card-body">
+          <p class="cert-tag">VIEW CERTIFICATE →</p>
+          <h3>Basic Robotics Course</h3>
+          <p class="cert-org">Coursera</p>
+        </div>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- Certificate lightbox viewer -->
+  <div id="cert-lightbox" class="lightbox" hidden>
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close certificate viewer">✕</button>
+    <div class="lightbox-inner">
+      <img id="lightbox-img" src="" alt="">
+      <p id="lightbox-title" class="lightbox-title"></p>
+    </div>
+  </div>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section">
+    <div class="section-head">
+      <span class="designator">U7</span>
+      <h2>Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Have a project idea, an opportunity, or just want to talk robotics? Reach out — I'd love to connect.</p>
+        <ul class="contact-list">
+          <li><span class="contact-label">Email</span><a href="mailto:devadharshan27112008@gmail.com">devadharshan27112008@gmail.com</a></li>
+          <li><span class="contact-label">Phone</span><a href="tel:+919361994901">+91 93619 94901</a></li>
+          <li><span class="contact-label">Location</span><span>Tiruvannamalai, Tamil Nadu, India</span></li>
+          <li><span class="contact-label">Ferrous Labs</span><a href="mailto:ferrouslabsofficial@gmail.com">ferrouslabsofficial@gmail.com</a></li>
+        </ul>
+        <div class="contact-socials">
+          <a href="https://www.linkedin.com/in/devadharshan27/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://instagram.com/_ferrous_os._" target="_blank" rel="noopener">Instagram ↗</a>
+          <a href="https://github.com/" target="_blank" rel="noopener" id="contact-github">GitHub ↗</a>
+          <a href="https://instagram.com/ferrous_labs" target="_blank" rel="noopener">Ferrous Labs ↗</a>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <label>Name<input type="text" name="name" required placeholder="Your name"></label>
+        <label>Email<input type="email" name="email" required placeholder="you@example.com"></label>
+        <label>Message<textarea name="message" rows="5" required placeholder="Say hello..."></textarea></label>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <p class="form-note">This opens your email client with the message pre-filled — no backend needed.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Designed &amp; built by N Devadharshan · <span id="year"></span></p>
+  <p class="footer-sub"></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
