@@ -1,190 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moon Rover — N Devadharshan</title>
-<meta name="description" content="Build log for the Moon Rover project — circuit, components, and photos.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230a0e14%22/><path d=%22M20 50h20M60 50h20M50 20v20M50 60v20%22 stroke=%22%2300e5ff%22 stroke-width=%226%22/><circle cx=%2250%22 cy=%2250%22 r=%2210%22 fill=%22none%22 stroke=%22%2339ff88%22 stroke-width=%226%22/></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
-<script>
-// Defined early (before any images) so onerror="smartImage(this)" always works,
-// even for images that fail instantly on page load.
-function smartImage(img) {
-  var exts = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG', 'WEBP'];
-  var tried = (img.getAttribute('data-tried') || '').split(',').filter(Boolean);
-  var base = img.getAttribute('data-base');
-  for (var i = 0; i < exts.length; i++) {
-    if (tried.indexOf(exts[i]) === -1) {
-      tried.push(exts[i]);
-      img.setAttribute('data-tried', tried.join(','));
-      img.src = base + '.' + exts[i];
-      return;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moon Rover — N Devadharshan</title>
+  <meta name="description" content="Build log for the Moon Rover project — circuit, components, and photos.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230a0e14%22/><path d=%22M20 50h20M60 50h20M50 20v20M50 60v20%22 stroke=%22%2300e5ff%22 stroke-width=%226%22/><circle cx=%2250%22 cy=%2250%22 r=%2210%22 fill=%22none%22 stroke=%22%2339ff88%22 stroke-width=%226%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    // Defined early (before any images) so onerror="smartImage(this)" always works,
+    // even for images that fail instantly on page load.
+    function smartImage(img) {
+      var exts = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG', 'WEBP'];
+      var tried = (img.getAttribute('data-tried') || '').split(',').filter(Boolean);
+      var base = img.getAttribute('data-base');
+      for (var i = 0; i < exts.length; i++) {
+        if (tried.indexOf(exts[i]) === -1) {
+          tried.push(exts[i]);
+          img.setAttribute('data-tried', tried.join(','));
+          img.src = base + '.' + exts[i];
+          return;
+        }
+      }
+      if (img.getAttribute('data-fallback') === 'hide') {
+        img.style.display = 'none';
+      } else if (img.parentElement) {
+        img.parentElement.classList.add('no-photo');
+      }
     }
-  }
-  if (img.getAttribute('data-fallback') === 'hide') {
-    img.style.display = 'none';
-  } else if (img.parentElement) {
-    img.parentElement.classList.add('no-photo');
-  }
-}
-</script>
+  </script>
 
 </head>
+
 <body>
 
-<header id="navbar">
-  <div class="nav-inner">
-    <a class="logo" href="../index.html#hero">
-      <span class="logo-bracket">&lt;</span>ND<span class="logo-bracket">/&gt;</span>
-    </a>
-    <nav id="nav-links">
-      <a href="../index.html#about">About</a>
-      <a href="../index.html#skills">Skills</a>
-      <a href="../index.html#experience">Experience</a>
-      <a href="../index.html#projects">Projects</a>
-      <a href="../index.html#certificates">Certificates</a>
-      <a href="../index.html#contact">Contact</a>
-      <a href="../assets/resume.pdf" class="nav-resume" download>Resume ↓</a>
+  <header id="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html#hero">
+        <span class="logo-bracket">&lt;</span>ND<span class="logo-bracket">/&gt;</span>
+      </a>
+      <nav id="nav-links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#certificates">Certificates</a>
+        <a href="../index.html#contact">Contact</a>
+        <a href="../assets/resume.pdf" class="nav-resume" download>Resume ↓</a>
+      </nav>
+      <button id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="project-page-main">
+
+    <p class="back-link"><span class="back-link-inner">← <a href="../index.html#projects">Back to Projects</a></span>
+    </p>
+
+    <!-- ============ PROJECT HERO ============ -->
+    <section class="project-hero">
+      <span class="designator">U5·01</span>
+      <h1>Moon Rover</h1>
+      <div class="project-badges">
+        <span class="project-badge">ESP32</span>
+        <span class="project-badge">WI-FI CONTROL</span>
+        <span class="project-badge">DC MOTORS</span>
+        <span class="project-badge">COMPLETED</span>
+      </div>
+      <p class="project-hero-desc">
+        A small-scale rover build inspired by lunar exploration rovers — chassis, motor control, and
+        navigation logic built from scratch as a hands-on robotics project. This page documents the
+        circuit, the components that went into it, and the build photos.
+      </p>
+    </section>
+
+    <!-- ============ OVERVIEW ============ -->
+    <section class="detail-section">
+      <div class="detail-section-head">
+        <h2>Overview</h2>
+      </div>
+      <p class="detail-body-text">
+        The goal of this build was to design a rover chassis that can drive over uneven, outdoor terrain
+        while being controlled wirelessly from a phone. The ESP32 was chosen as the brain of the rover since
+        it has built-in Wi-Fi, which made it possible to host a simple web control page directly from the
+        board — no separate app needed.
+      </p>
+    </section>
+
+    <!-- ============ COMPONENTS ============ -->
+    <section class="detail-section">
+      <div class="detail-section-head">
+        <h2>Components Used</h2>
+      </div>
+      <div class="components-list">
+        <div class="component-item">
+          <h4>ESP32 Dev Board</h4>
+          <p>Main controller — runs the drive logic and hosts the Wi-Fi control interface.</p>
+        </div>
+        <div class="component-item">
+          <h4>L298N Motor Driver</h4>
+          <p>Switches higher current to the drive motors than the ESP32's GPIO pins can supply directly.</p>
+        </div>
+        <div class="component-item">
+          <h4>IR Sensor</h4>
+          <p>Detects obstacles or line/edge cues at close range to help guide the rover's path.</p>
+        </div>
+        <div class="component-item">
+          <h4>Ultrasonic Sensor</h4>
+          <p>Measures distance to obstacles ahead, enabling basic obstacle avoidance.</p>
+        </div>
+        <div class="component-item">
+          <h4>Li-ion Battery</h4>
+          <p>Powers the motors and the ESP32 independently of a wall supply for outdoor testing.</p>
+        </div>
+        <div class="component-item">
+          <h4>Servo Motor</h4>
+          <p>Steers or actuates a moving component, such as a sensor mount, on the rover.</p>
+        </div>
+        <div class="component-item">
+          <h4>LEDs</h4>
+          <p>Used for headlights and status indication on the rover.</p>
+        </div>
+        <div class="component-item">
+          <h4>DC Motors ×6</h4>
+          <p>Drive the six wheels independently, allowing turning by varying speed side to side.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PHOTO GALLERY ============ -->
+    <section class="detail-section">
+      <div class="detail-section-head">
+        <h2>Photo Gallery</h2>
+      </div>
+      <div class="detail-gallery">
+        <button type="button" class="gallery-tile" data-lightbox-src="../assets/projects/moon-rover/photo-1.jpg"
+          data-lightbox-title="Moon Rover — photo 1">
+          <img src="../assets/projects/moon-rover/photo-1.jpg" data-base="../assets/projects/moon-rover/photo-1"
+            data-tried="jpg" data-fallback="no-photo" alt="Moon Rover build photo 1" onerror="smartImage(this)"
+            onload="syncLightboxSrc(this)">
+          <div class="gallery-tile-fallback"><span class="gallery-plus">+</span>photo-1.jpg</div>
+        </button>
+        <button type="button" class="gallery-tile" data-lightbox-src="../assets/projects/moon-rover/photo-2.jpg"
+          data-lightbox-title="Moon Rover — photo 2">
+          <img src="../assets/projects/moon-rover/photo-2.jpg" data-base="../assets/projects/moon-rover/photo-2"
+            data-tried="jpg" data-fallback="no-photo" alt="Moon Rover build photo 2" onerror="smartImage(this)"
+            onload="syncLightboxSrc(this)">
+          <div class="gallery-tile-fallback"><span class="gallery-plus">+</span>photo-2.jpg</div>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- Image lightbox viewer -->
+    <div id="img-lightbox" class="lightbox" hidden>
+      <button type="button" class="lightbox-close" id="img-lightbox-close" aria-label="Close image viewer">✕</button>
+      <div class="lightbox-inner">
+        <img id="img-lightbox-img" src="" alt="">
+        <p id="img-lightbox-title" class="lightbox-title"></p>
+      </div>
+    </div>
+
+    <nav class="project-pagenav">
+      <a href="../index.html#projects">← All Projects</a>
+      <a href="bluetooth-car.html">Bluetooth-Controlled Arduino Car →</a>
     </nav>
-    <button id="nav-toggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
 
-<main class="project-page-main">
+  </main>
 
-  <p class="back-link"><span class="back-link-inner">← <a href="../index.html#projects">Back to Projects</a></span></p>
+  <footer>
+    <p>Designed &amp; built by N Devadharshan · <span id="year"></span></p>
+    <p class="footer-sub"></p>
+  </footer>
 
-  <!-- ============ PROJECT HERO ============ -->
-  <section class="project-hero">
-    <span class="designator">U5·01</span>
-    <h1>Moon Rover</h1>
-    <div class="project-badges">
-      <span class="project-badge">ESP32</span>
-      <span class="project-badge">WI-FI CONTROL</span>
-      <span class="project-badge">DC MOTORS</span>
-      <span class="project-badge">COMPLETED</span>
-    </div>
-    <p class="project-hero-desc">
-      A small-scale rover build inspired by lunar exploration rovers — chassis, motor control, and
-      navigation logic built from scratch as a hands-on robotics project. This page documents the
-      circuit, the components that went into it, and the build photos.
-    </p>
-  </section>
-
-  <!-- ============ OVERVIEW ============ -->
-  <section class="detail-section">
-    <div class="detail-section-head">
-      <h2>Overview</h2>
-    </div>
-    <p class="detail-body-text">
-      The goal of this build was to design a rover chassis that can drive over uneven, outdoor terrain
-      while being controlled wirelessly from a phone. The ESP32 was chosen as the brain of the rover since
-      it has built-in Wi-Fi, which made it possible to host a simple web control page directly from the
-      board — no separate app needed.
-    </p>
-  </section>
-
-  <!-- ============ COMPONENTS ============ -->
-  <section class="detail-section">
-    <div class="detail-section-head">
-      <h2>Components Used</h2>
-    </div>
-    <div class="components-list">
-      <div class="component-item">
-        <h4>ESP32 Dev Board</h4>
-        <p>Main controller — runs the drive logic and hosts the Wi-Fi control interface.</p>
-      </div>
-      <div class="component-item">
-        <h4>L298N Motor Driver</h4>
-        <p>Switches higher current to the drive motors than the ESP32's GPIO pins can supply directly.</p>
-      </div>
-      <div class="component-item">
-        <h4>IR Sensor</h4>
-        <p>Detects obstacles or line/edge cues at close range to help guide the rover's path.</p>
-      </div>
-      <div class="component-item">
-        <h4>Ultrasonic Sensor</h4>
-        <p>Measures distance to obstacles ahead, enabling basic obstacle avoidance.</p>
-      </div>
-      <div class="component-item">
-        <h4>Li-ion Battery</h4>
-        <p>Powers the motors and the ESP32 independently of a wall supply for outdoor testing.</p>
-      </div>
-      <div class="component-item">
-        <h4>Servo Motor</h4>
-        <p>Steers or actuates a moving component, such as a sensor mount, on the rover.</p>
-      </div>
-      <div class="component-item">
-        <h4>LEDs</h4>
-        <p>Used for headlights and status indication on the rover.</p>
-      </div>
-      <div class="component-item">
-        <h4>DC Motors ×6</h4>
-        <p>Drive the six wheels independently, allowing turning by varying speed side to side.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PHOTO GALLERY ============ -->
-  <section class="detail-section">
-    <div class="detail-section-head">
-      <h2>Photo Gallery</h2>
-    </div>
-    <div class="detail-gallery">
-      <button type="button" class="gallery-tile" data-lightbox-src="../assets/projects/moon-rover/photo-1.jpg" data-lightbox-title="Moon Rover — photo 1">
-        <img src="../assets/projects/moon-rover/photo-1.jpg" data-base="../assets/projects/moon-rover/photo-1" data-tried="jpg" data-fallback="no-photo" alt="Moon Rover build photo 1" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
-        <div class="gallery-tile-fallback"><span class="gallery-plus">+</span>photo-1.jpg</div>
-      </button>
-      <button type="button" class="gallery-tile" data-lightbox-src="../assets/projects/moon-rover/photo-2.jpg" data-lightbox-title="Moon Rover — photo 2">
-        <img src="../assets/projects/moon-rover/photo-2.jpg" data-base="../assets/projects/moon-rover/photo-2" data-tried="jpg" data-fallback="no-photo" alt="Moon Rover build photo 2" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
-        <div class="gallery-tile-fallback"><span class="gallery-plus">+</span>photo-2.jpg</div>
-      </button>
-      <button type="button" class="gallery-tile" data-lightbox-src="../assets/projects/moon-rover/photo-3.jpg" data-lightbox-title="Moon Rover — photo 3">
-        <img src="../assets/projects/moon-rover/photo-3.jpg" data-base="../assets/projects/moon-rover/photo-3" data-tried="jpg" data-fallback="no-photo" alt="Moon Rover build photo 3" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
-        <div class="gallery-tile-fallback"><span class="gallery-plus">+</span>photo-3.jpg</div>
-      </button>
-      <button type="button" class="gallery-tile" data-lightbox-src="../assets/projects/moon-rover/photo-4.jpg" data-lightbox-title="Moon Rover — photo 4">
-        <img src="../assets/projects/moon-rover/photo-4.jpg" data-base="../assets/projects/moon-rover/photo-4" data-tried="jpg" data-fallback="no-photo" alt="Moon Rover build photo 4" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
-        <div class="gallery-tile-fallback"><span class="gallery-plus">+</span>photo-4.jpg</div>
-      </button>
-      <button type="button" class="gallery-tile" data-lightbox-src="../assets/projects/moon-rover/photo-5.jpg" data-lightbox-title="Moon Rover — photo 5">
-        <img src="../assets/projects/moon-rover/photo-5.jpg" data-base="../assets/projects/moon-rover/photo-5" data-tried="jpg" data-fallback="no-photo" alt="Moon Rover build photo 5" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
-        <div class="gallery-tile-fallback"><span class="gallery-plus">+</span>photo-5.jpg</div>
-      </button>
-      <button type="button" class="gallery-tile" data-lightbox-src="../assets/projects/moon-rover/photo-6.jpg" data-lightbox-title="Moon Rover — photo 6">
-        <img src="../assets/projects/moon-rover/photo-6.jpg" data-base="../assets/projects/moon-rover/photo-6" data-tried="jpg" data-fallback="no-photo" alt="Moon Rover build photo 6" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
-        <div class="gallery-tile-fallback"><span class="gallery-plus">+</span>photo-6.jpg</div>
-      </button>
-    </div>
-  </section>
-
-  <!-- Image lightbox viewer -->
-  <div id="img-lightbox" class="lightbox" hidden>
-    <button type="button" class="lightbox-close" id="img-lightbox-close" aria-label="Close image viewer">✕</button>
-    <div class="lightbox-inner">
-      <img id="img-lightbox-img" src="" alt="">
-      <p id="img-lightbox-title" class="lightbox-title"></p>
-    </div>
-  </div>
-
-  <nav class="project-pagenav">
-    <a href="../index.html#projects">← All Projects</a>
-    <a href="bluetooth-car.html">Bluetooth-Controlled Arduino Car →</a>
-  </nav>
-
-</main>
-
-<footer>
-  <p>Designed &amp; built by N Devadharshan · <span id="year"></span></p>
-  <p class="footer-sub"></p>
-</footer>
-
-<script src="../assets/js/project-page.js"></script>
+  <script src="../assets/js/project-page.js"></script>
 </body>
+
 </html>
