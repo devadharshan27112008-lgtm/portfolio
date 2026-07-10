@@ -4,7 +4,7 @@ A dark, circuit-themed personal portfolio site for an ECE student and robotics e
 Built with plain HTML/CSS/JS — no framework, no build step, so it deploys anywhere instantly.
 
 ## What's inside
-- `index.html` — all homepage content (About, Skills, Experience, Projects, Certificates, Contact)
+- `index.html` — all homepage content (About, Skills, Experience, Projects, Certificates, Contact, Learning: 3D design (Tinkercad) & PCB design (KiCad))
 - `style.css` — the PCB/circuit visual theme (dark background, neon cyan/green traces, copper accents)
 - `script.js` — animated circuit background, mobile nav, scroll progress trace, contact form
 - `projects/` — one detail page per project (opens in a new tab from the homepage project cards)
