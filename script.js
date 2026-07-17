@@ -49,6 +49,32 @@ if (GITHUB_USERNAME) {
   const url = `https://github.com/${GITHUB_USERNAME}`;
   document.getElementById('hero-github').href = url;
   document.getElementById('contact-github').href = url;
+
+  // Fetch last update time from GitHub API
+  fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/portfolio/commits/main`)
+    .then(response => {
+      if (response.ok) return response.json();
+      throw new Error('Network response was not ok.');
+    })
+    .then(data => {
+      if (data && data.commit && data.commit.committer && data.commit.committer.date) {
+        const commitDate = new Date(data.commit.committer.date);
+        const formattedDate = commitDate.toLocaleString(undefined, {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        document.getElementById('last-updated').textContent = formattedDate;
+      } else {
+        document.getElementById('last-updated').textContent = 'Recently';
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching last commit:', error);
+      document.getElementById('last-updated').textContent = 'Recently';
+    });
 }
 
 // ============================================================
