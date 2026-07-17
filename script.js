@@ -52,22 +52,20 @@ if (GITHUB_USERNAME) {
 }
 
 // ============================================================
-// EmailJS configuration — fill in your credentials from
-// https://www.emailjs.com  (free account, 200 emails/month)
+// EmailJS configuration
 // ============================================================
-const EMAILJS_PUBLIC_KEY  = 'Ck0ol0Oe6KG1DID9x';  // Account > API Keys
-const EMAILJS_SERVICE_ID  = 'service_x9bg4us';     // Email Services tab
-const EMAILJS_TEMPLATE_ID = 'template_h7k8ktg';    // Email Templates tab
+const EMAILJS_PUBLIC_KEY  = 'Ck0ol0Oe6KG1DID9x';
+const EMAILJS_SERVICE_ID  = 'service_x9bg4us';
+const EMAILJS_TEMPLATE_ID = 'template_h7k8ktg';
 
-// Always init — keys are already set
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
 // ============================================================
 // Contact form — sends directly via EmailJS, no redirect
 // ============================================================
-const form = document.getElementById('contact-form');
+const form      = document.getElementById('contact-form');
 const formStatus = document.getElementById('form-status');
-const submitBtn = form.querySelector('button[type="submit"]');
+const submitBtn  = form.querySelector('button[type="submit"]');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -78,28 +76,29 @@ form.addEventListener('submit', (e) => {
 
   // Lock UI while sending
   submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending…';
+  submitBtn.textContent = 'Sending\u2026';
   setStatus('', '');
 
   emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-    from_name:    name,
-    from_email:   email,
-    message:      message,
-    to_email:     'devadharshan27112008@gmail.com',
+    from_name:  name,
+    from_email: email,
+    message:    message,
+    to_email:   'devadharshan27112008@gmail.com',
   })
   .then(() => {
-    setStatus(`✓ Message sent! I'll get back to you soon.`, 'success');
+    setStatus("Message sent! I'll get back to you soon.", 'success');
     form.reset();
   })
   .catch((err) => {
     console.error('EmailJS error:', err);
-    setStatus('✗ Something went wrong. Please try emailing directly.', 'error');
+    setStatus('Something went wrong. Please email directly.', 'error');
   })
   .finally(() => {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Send Message';
   });
 });
+
 
 function setStatus(msg, type) {
   formStatus.textContent = msg;
