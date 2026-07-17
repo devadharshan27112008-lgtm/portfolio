@@ -55,13 +55,12 @@ if (GITHUB_USERNAME) {
 // EmailJS configuration — fill in your credentials from
 // https://www.emailjs.com  (free account, 200 emails/month)
 // ============================================================
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // Account > API Keys
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // Email Services tab
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // Email Templates tab
+const EMAILJS_PUBLIC_KEY  = 'Ck0ol0Oe6KG1DID9x';  // Account > API Keys
+const EMAILJS_SERVICE_ID  = 'service_x9bg4us';     // Email Services tab
+const EMAILJS_TEMPLATE_ID = 'template_h7k8ktg';    // Email Templates tab
 
-if (EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-}
+// Always init — keys are already set
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
 // ============================================================
 // Contact form — sends directly via EmailJS, no redirect
@@ -72,17 +71,6 @@ const submitBtn = form.querySelector('button[type="submit"]');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-
-  if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-    // Fallback to mailto if EmailJS is not yet configured
-    const name    = form.name.value.trim();
-    const email   = form.email.value.trim();
-    const message = form.message.value.trim();
-    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-    const body    = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-    window.location.href = `mailto:devadharshan27112008@gmail.com?subject=${subject}&body=${body}`;
-    return;
-  }
 
   const name    = form.name.value.trim();
   const email   = form.email.value.trim();
@@ -100,7 +88,7 @@ form.addEventListener('submit', (e) => {
     to_email:     'devadharshan27112008@gmail.com',
   })
   .then(() => {
-    setStatus('✓ Message sent! I'll get back to you soon.', 'success');
+    setStatus(`✓ Message sent! I'll get back to you soon.`, 'success');
     form.reset();
   })
   .catch((err) => {
