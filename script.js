@@ -52,18 +52,71 @@ if (GITHUB_USERNAME) {
 }
 
 // ============================================================
-// Contact form -> mailto (no backend required)
+// EmailJS configuration — fill in your credentials from
+// https://www.emailjs.com  (free account, 200 emails/month)
+// ============================================================
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';   // Account > API Keys
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';   // Email Services tab
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // Email Templates tab
+
+if (EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+}
+
+// ============================================================
+// Contact form — sends directly via EmailJS, no redirect
 // ============================================================
 const form = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+const submitBtn = form.querySelector('button[type="submit"]');
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
+
+  if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+    // Fallback to mailto if EmailJS is not yet configured
+    const name    = form.name.value.trim();
+    const email   = form.email.value.trim();
+    const message = form.message.value.trim();
+    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
+    const body    = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+    window.location.href = `mailto:devadharshan27112008@gmail.com?subject=${subject}&body=${body}`;
+    return;
+  }
+
+  const name    = form.name.value.trim();
+  const email   = form.email.value.trim();
   const message = form.message.value.trim();
-  const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-  const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-  window.location.href = `mailto:devadharshan27112008@gmail.com?subject=${subject}&body=${body}`;
+
+  // Lock UI while sending
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+  setStatus('', '');
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+    from_name:    name,
+    from_email:   email,
+    message:      message,
+    to_email:     'devadharshan27112008@gmail.com',
+  })
+  .then(() => {
+    setStatus('✓ Message sent! I'll get back to you soon.', 'success');
+    form.reset();
+  })
+  .catch((err) => {
+    console.error('EmailJS error:', err);
+    setStatus('✗ Something went wrong. Please try emailing directly.', 'error');
+  })
+  .finally(() => {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Message';
+  });
 });
+
+function setStatus(msg, type) {
+  formStatus.textContent = msg;
+  formStatus.className = 'form-note' + (type ? ' form-note--' + type : '');
+}
 
 // ============================================================
 // Certificate lightbox — pressing the browser Back button closes

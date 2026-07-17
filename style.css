@@ -981,3 +981,14 @@ footer p { margin-bottom: 6px; }
   transition: border-color 0.2s ease, color 0.2s ease;
 }
 .project-pagenav a:hover { border-color: var(--trace-cyan); color: var(--trace-cyan); }
+
+/* ---- Contact form status feedback ---- */
+.form-note {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  min-height: 1.4em;
+  transition: color 0.3s ease;
+}
+.form-note--success { color: var(--trace-green); }
+.form-note--error   { color: var(--copper); }

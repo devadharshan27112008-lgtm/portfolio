@@ -447,7 +447,7 @@
           <label>Email<input type="email" name="email" required placeholder="you@example.com"></label>
           <label>Message<textarea name="message" rows="5" required placeholder="Say hello..."></textarea></label>
           <button type="submit" class="btn btn-primary">Send Message</button>
-          <p class="form-note">This opens your email client with the message pre-filled — no backend needed.</p>
+          <p class="form-note" id="form-status"></p>
         </form>
       </div>
     </section>
@@ -459,6 +459,7 @@
     <p class="footer-sub"></p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
 
