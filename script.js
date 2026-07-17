@@ -81,6 +81,7 @@ form.addEventListener('submit', (e) => {
 
   emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
     subject:    `Portfolio contact from ${name}`,
+    name:       name,
     from_name:  name,
     from_email: email,
     reply_to:   email,
