@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates — N Devadharshan</title>
+  <meta name="description"
+    content="Certificates earned by N Devadharshan — PRAY LABS internship, Udemy Robotics, Coursera Robotics.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230a0e14%22/><path d=%22M20 50h20M60 50h20M50 20v20M50 60v20%22 stroke=%22%2300e5ff%22 stroke-width=%226%22/><circle cx=%2250%22 cy=%2250%22 r=%2210%22 fill=%22none%22 stroke=%22%2339ff88%22 stroke-width=%226%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <canvas id="circuit-bg"></canvas>
+
+  <svg id="spine" width="40" viewBox="0 0 40 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="20" y1="0" x2="20" y2="100" stroke="url(#spineGrad)" stroke-width="1.5" />
+    <defs>
+      <linearGradient id="spineGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.05" />
+        <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.5" />
+        <stop offset="100%" stop-color="#39ff88" stop-opacity="0.4" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <header id="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-bracket">&lt;</span>ND<span class="logo-bracket">/&gt;</span>
+      </a>
+      <nav id="nav-links">
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html">Projects</a>
+        <a href="certificates.html" class="nav-active">Certificates</a>
+        <a href="contact.html">Contact</a>
+        <a href="assets/resume.pdf" class="nav-resume" download>Resume ↓</a>
+      </nav>
+      <button id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ CERTIFICATES ============ -->
+    <section id="certificates" class="section">
+      <div class="section-head">
+        <span class="designator">U6</span>
+        <h2>Certificates</h2>
+      </div>
+      <div class="cert-grid">
+
+        <button type="button" class="cert-card cert-card--portrait"
+          data-cert-src="assets/certs/internship-pray-labs.jpg"
+          data-cert-title="Internship Completion Letter — PRAY LABS">
+          <div class="cert-thumb cert-thumb--portrait">
+            <img src="assets/certs/internship-pray-labs.jpg" alt="Internship completion letter from PRAY LABS"
+              onerror="this.style.display='none'">
+            <div class="cert-thumb-fallback">
+              <svg viewBox="0 0 100 130" width="70" aria-hidden="true">
+                <rect x="6" y="6" width="88" height="118" rx="4" fill="none" stroke="#00e5ff" stroke-width="2" />
+                <line x1="20" y1="34" x2="80" y2="34" stroke="#39ff88" stroke-width="2" />
+                <line x1="20" y1="50" x2="80" y2="50" stroke="#1c2833" stroke-width="2" />
+                <line x1="20" y1="60" x2="80" y2="60" stroke="#1c2833" stroke-width="2" />
+                <line x1="20" y1="70" x2="80" y2="70" stroke="#1c2833" stroke-width="2" />
+                <circle cx="50" cy="100" r="12" fill="none" stroke="#ff8a3d" stroke-width="2" />
+              </svg>
+            </div>
+          </div>
+          <div class="cert-card-body">
+            <p class="cert-tag">VIEW CERTIFICATE →</p>
+            <h3>Internship Completion Letter</h3>
+            <p class="cert-org">PRAY LABS, Tiruvannamalai</p>
+          </div>
+        </button>
+
+        <button type="button" class="cert-card cert-card--landscape" data-cert-src="assets/certs/udemy-robotics.jpg"
+          data-cert-title="Basic Robotics Course — Udemy">
+          <div class="cert-thumb cert-thumb--landscape">
+            <img src="assets/certs/udemy-robotics.jpg" alt="Basic Robotics Course certificate from Udemy"
+              onerror="this.style.display='none'">
+            <div class="cert-thumb-fallback">
+              <svg viewBox="0 0 140 100" width="80" aria-hidden="true">
+                <rect x="6" y="6" width="128" height="88" rx="4" fill="none" stroke="#00e5ff" stroke-width="2" />
+                <line x1="24" y1="30" x2="116" y2="30" stroke="#39ff88" stroke-width="2" />
+                <line x1="24" y1="44" x2="90" y2="44" stroke="#1c2833" stroke-width="2" />
+                <circle cx="108" cy="66" r="14" fill="none" stroke="#ff8a3d" stroke-width="2" />
+              </svg>
+            </div>
+          </div>
+          <div class="cert-card-body">
+            <p class="cert-tag">VIEW CERTIFICATE →</p>
+            <h3>Basic Robotics Course</h3>
+            <p class="cert-org">Udemy</p>
+          </div>
+        </button>
+
+        <button type="button" class="cert-card cert-card--landscape" data-cert-src="assets/certs/coursera-robotics.jpg"
+          data-cert-title="Basic Robotics Course — Coursera">
+          <div class="cert-thumb cert-thumb--landscape">
+            <img src="assets/certs/coursera-robotics.jpg" alt="Basic Robotics Course certificate from Coursera"
+              onerror="this.style.display='none'">
+            <div class="cert-thumb-fallback">
+              <svg viewBox="0 0 140 100" width="80" aria-hidden="true">
+                <rect x="6" y="6" width="128" height="88" rx="4" fill="none" stroke="#00e5ff" stroke-width="2" />
+                <line x1="24" y1="30" x2="116" y2="30" stroke="#39ff88" stroke-width="2" />
+                <line x1="24" y1="44" x2="90" y2="44" stroke="#1c2833" stroke-width="2" />
+                <circle cx="108" cy="66" r="14" fill="none" stroke="#ff8a3d" stroke-width="2" />
+              </svg>
+            </div>
+          </div>
+          <div class="cert-card-body">
+            <p class="cert-tag">VIEW CERTIFICATE →</p>
+            <h3>Basic Robotics Course</h3>
+            <p class="cert-org">Coursera</p>
+          </div>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- Certificate lightbox viewer -->
+    <div id="cert-lightbox" class="lightbox" hidden>
+      <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close certificate viewer">✕</button>
+      <div class="lightbox-inner">
+        <img id="lightbox-img" src="" alt="">
+        <p id="lightbox-title" class="lightbox-title"></p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Designed &amp; built by N Devadharshan · <span id="year"></span></p>
+    <p class="footer-sub"></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

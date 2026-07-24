@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — N Devadharshan</title>
+  <meta name="description"
+    content="Get in touch with N Devadharshan — reach out for robotics projects, opportunities, or collaboration.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230a0e14%22/><path d=%22M20 50h20M60 50h20M50 20v20M50 60v20%22 stroke=%22%2300e5ff%22 stroke-width=%226%22/><circle cx=%2250%22 cy=%2250%22 r=%2210%22 fill=%22none%22 stroke=%22%2339ff88%22 stroke-width=%226%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <canvas id="circuit-bg"></canvas>
+
+  <svg id="spine" width="40" viewBox="0 0 40 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="20" y1="0" x2="20" y2="100" stroke="url(#spineGrad)" stroke-width="1.5" />
+    <defs>
+      <linearGradient id="spineGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.05" />
+        <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.5" />
+        <stop offset="100%" stop-color="#39ff88" stop-opacity="0.4" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <header id="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-bracket">&lt;</span>ND<span class="logo-bracket">/&gt;</span>
+      </a>
+      <nav id="nav-links">
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html">Projects</a>
+        <a href="certificates.html">Certificates</a>
+        <a href="contact.html" class="nav-active">Contact</a>
+        <a href="assets/resume.pdf" class="nav-resume" download>Resume ↓</a>
+      </nav>
+      <button id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section">
+      <div class="section-head">
+        <span class="designator">U7</span>
+        <h2>Contact</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p>Have a project idea, an opportunity, or just want to talk robotics? Reach out — I'd love to connect.</p>
+          <ul class="contact-list">
+            <li><span class="contact-label">Email</span><a
+                href="mailto:devadharshan27112008@gmail.com">devadharshan27112008@gmail.com</a></li>
+            <li><span class="contact-label">Phone</span><a href="tel:+919361994901">+91 93619 94901</a></li>
+            <li><span class="contact-label">Location</span><span>Tiruvannamalai, Tamil Nadu, India</span></li>
+            <li><span class="contact-label">Ferrous Labs</span><a
+                href="mailto:ferrouslabsofficial@gmail.com">ferrouslabsofficial@gmail.com</a></li>
+          </ul>
+          <div class="contact-socials">
+            <a href="https://www.linkedin.com/in/devadharshan27/" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="https://instagram.com/_ferrous_os._" target="_blank" rel="noopener">Instagram ↗</a>
+            <a href="https://github.com/" target="_blank" rel="noopener" id="contact-github">GitHub ↗</a>
+            <a href="https://instagram.com/ferrous_labs" target="_blank" rel="noopener">Ferrous Labs ↗</a>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <label>Name<input type="text" name="name" required placeholder="Your name"></label>
+          <label>Email<input type="email" name="email" required placeholder="you@example.com"></label>
+          <label>Message<textarea name="message" rows="5" required placeholder="Say hello..."></textarea></label>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <p class="form-note">This opens your email client with the message pre-filled — no backend needed.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Designed &amp; built by N Devadharshan · <span id="year"></span></p>
+    <p class="footer-sub"></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

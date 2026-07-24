@@ -130,6 +130,7 @@ main, header, footer { position: relative; z-index: 2; }
   position: relative;
 }
 #nav-links a:hover { color: var(--trace-cyan); }
+#nav-links a.nav-active { color: var(--trace-cyan); border-bottom: 1px solid var(--trace-cyan); padding-bottom: 2px; }
 
 .nav-resume {
   color: var(--bg-deep) !important;

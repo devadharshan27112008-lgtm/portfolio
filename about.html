@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — N Devadharshan</title>
+  <meta name="description"
+    content="Learn about N Devadharshan — ECE aspirant, robotics builder, and founder of Ferrous Labs based in Tiruvannamalai.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230a0e14%22/><path d=%22M20 50h20M60 50h20M50 20v20M50 60v20%22 stroke=%22%2300e5ff%22 stroke-width=%226%22/><circle cx=%2250%22 cy=%2250%22 r=%2210%22 fill=%22none%22 stroke=%22%2339ff88%22 stroke-width=%226%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function smartImage(img) {
+      var exts = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG', 'WEBP'];
+      var tried = (img.getAttribute('data-tried') || '').split(',').filter(Boolean);
+      var base = img.getAttribute('data-base');
+      for (var i = 0; i < exts.length; i++) {
+        if (tried.indexOf(exts[i]) === -1) {
+          tried.push(exts[i]);
+          img.setAttribute('data-tried', tried.join(','));
+          img.src = base + '.' + exts[i];
+          return;
+        }
+      }
+      if (img.getAttribute('data-fallback') === 'hide') {
+        img.style.display = 'none';
+      } else if (img.parentElement) {
+        img.parentElement.classList.add('no-photo');
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <canvas id="circuit-bg"></canvas>
+
+  <svg id="spine" width="40" viewBox="0 0 40 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="20" y1="0" x2="20" y2="100" stroke="url(#spineGrad)" stroke-width="1.5" />
+    <defs>
+      <linearGradient id="spineGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.05" />
+        <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.5" />
+        <stop offset="100%" stop-color="#39ff88" stop-opacity="0.4" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <header id="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-bracket">&lt;</span>ND<span class="logo-bracket">/&gt;</span>
+      </a>
+      <nav id="nav-links">
+        <a href="about.html" class="nav-active">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html">Projects</a>
+        <a href="certificates.html">Certificates</a>
+        <a href="contact.html">Contact</a>
+        <a href="assets/resume.pdf" class="nav-resume" download>Resume ↓</a>
+      </nav>
+      <button id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section">
+      <div class="section-head">
+        <span class="designator">U2</span>
+        <h2>About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo">
+          <div class="photo-frame">
+            <img src="assets/images/profile.jpg" data-base="assets/images/profile" data-tried="jpg" alt="N Devadharshan"
+              onerror="smartImage(this)">
+            <div class="photo-fallback">
+              <svg viewBox="0 0 120 120" width="72" height="72" aria-hidden="true">
+                <circle cx="60" cy="60" r="56" fill="none" stroke="#00e5ff" stroke-width="2" stroke-dasharray="6 6" />
+                <circle cx="60" cy="42" r="18" fill="none" stroke="#39ff88" stroke-width="3" />
+                <path d="M28 96c6-20 22-30 32-30s26 10 32 30" fill="none" stroke="#39ff88" stroke-width="3" />
+              </svg>
+              <p>photo.jpg<br><span>add your image →</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>
+            I'm N Devadharshan, currently based in <strong>Tiruvannamalai</strong>, and I recently completed
+            my 12th standard at Maharishi Vidya Mandir, Tiruvannamalai (2025–2026). I'm planning to pursue
+            a college degree in <strong>Electronics and Communication Engineering (ECE)</strong> in Tamil Nadu,
+            with a focus on robotics.
+          </p>
+          <p>
+            My interest lies in robotics, building hands-on projects, working with circuits, and coding
+            microcontrollers. I enjoy the process of turning a rough idea into a working prototype —
+            from soldering a circuit to writing the firmware that brings it to life.
+          </p>
+          <p>
+            I also run <strong>Ferrous Labs</strong>, where I build robotics projects with school
+            students — follow along on
+            <a href="https://instagram.com/ferrous_labs" target="_blank" rel="noopener">Instagram</a>
+            or reach out at
+            <a href="mailto:ferrouslabsofficial@gmail.com">ferrouslabsofficial@gmail.com</a>.
+          </p>
+          <div class="about-facts">
+            <div class="fact"><span class="fact-label">Location</span><span class="fact-value">Tiruvannamalai, TN</span>
+            </div>
+            <div class="fact"><span class="fact-label">Focus</span><span class="fact-value">Robotics · Embedded
+                Systems</span></div>
+            <div class="fact"><span class="fact-label">Education</span><span class="fact-value">12th — Maharishi Vidya
+                Mandir (2025–26)</span></div>
+            <div class="fact"><span class="fact-label">Next</span><span class="fact-value">B.E./B.Tech ECE, Tamil
+                Nadu</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Designed &amp; built by N Devadharshan · <span id="year"></span></p>
+    <p class="footer-sub"></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

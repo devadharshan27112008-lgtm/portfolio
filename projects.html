@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — N Devadharshan</title>
+  <meta name="description"
+    content="Robotics and embedded systems projects by N Devadharshan — Moon Rover, Bluetooth-Controlled Car, and more.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230a0e14%22/><path d=%22M20 50h20M60 50h20M50 20v20M50 60v20%22 stroke=%22%2300e5ff%22 stroke-width=%226%22/><circle cx=%2250%22 cy=%2250%22 r=%2210%22 fill=%22none%22 stroke=%22%2339ff88%22 stroke-width=%226%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function smartImage(img) {
+      var exts = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG', 'WEBP'];
+      var tried = (img.getAttribute('data-tried') || '').split(',').filter(Boolean);
+      var base = img.getAttribute('data-base');
+      for (var i = 0; i < exts.length; i++) {
+        if (tried.indexOf(exts[i]) === -1) {
+          tried.push(exts[i]);
+          img.setAttribute('data-tried', tried.join(','));
+          img.src = base + '.' + exts[i];
+          return;
+        }
+      }
+      if (img.getAttribute('data-fallback') === 'hide') {
+        img.style.display = 'none';
+      } else if (img.parentElement) {
+        img.parentElement.classList.add('no-photo');
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <canvas id="circuit-bg"></canvas>
+
+  <svg id="spine" width="40" viewBox="0 0 40 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="20" y1="0" x2="20" y2="100" stroke="url(#spineGrad)" stroke-width="1.5" />
+    <defs>
+      <linearGradient id="spineGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.05" />
+        <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.5" />
+        <stop offset="100%" stop-color="#39ff88" stop-opacity="0.4" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <header id="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-bracket">&lt;</span>ND<span class="logo-bracket">/&gt;</span>
+      </a>
+      <nav id="nav-links">
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="projects.html" class="nav-active">Projects</a>
+        <a href="certificates.html">Certificates</a>
+        <a href="contact.html">Contact</a>
+        <a href="assets/resume.pdf" class="nav-resume" download>Resume ↓</a>
+      </nav>
+      <button id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section">
+      <div class="section-head">
+        <span class="designator">U5</span>
+        <h2>Projects</h2>
+      </div>
+      <div class="projects-grid">
+
+        <a class="project-card" href="projects/moon-rover.html">
+          <div class="project-thumb" data-icon="rover">
+            <div class="gallery-strip" id="rover-gallery">
+              <img src="assets/projects/moon-rover/moon-rover-1.png" data-base="assets/projects/moon-rover/moon-rover-1"
+                data-fallback="hide" alt="Moon Rover project photo 1" onerror="smartImage(this)">
+            </div>
+            <div class="thumb-placeholder">
+              <svg viewBox="0 0 100 60" width="100%" aria-hidden="true">
+                <ellipse cx="50" cy="48" rx="38" ry="6" fill="#39ff8822" />
+                <circle cx="22" cy="42" r="8" fill="none" stroke="#39ff88" stroke-width="2" />
+                <circle cx="78" cy="42" r="8" fill="none" stroke="#39ff88" stroke-width="2" />
+                <circle cx="50" cy="42" r="8" fill="none" stroke="#39ff88" stroke-width="2" />
+                <rect x="30" y="18" width="40" height="18" rx="3" fill="none" stroke="#00e5ff" stroke-width="2" />
+                <line x1="50" y1="18" x2="50" y2="6" stroke="#00e5ff" stroke-width="2" />
+                <circle cx="50" cy="6" r="3" fill="#00e5ff" />
+              </svg>
+            </div>
+          </div>
+          <div class="project-body">
+            <p class="project-tag">ESP32 · WIFI</p>
+            <h3>Moon Rover</h3>
+            <p>A small-scale rover build inspired by lunar exploration rovers — chassis, motor control, and
+              navigation logic built from scratch as a hands-on robotics project.</p>
+            <p class="project-link-hint">FULL BUILD LOG →</p>
+          </div>
+        </a>
+
+        <a class="project-card" href="projects/bluetooth-car.html">
+          <div class="project-thumb" data-icon="car">
+            <div class="thumb-placeholder">
+              <svg viewBox="0 0 100 60" width="100%" aria-hidden="true">
+                <rect x="18" y="24" width="64" height="18" rx="4" fill="none" stroke="#00e5ff" stroke-width="2" />
+                <circle cx="32" cy="44" r="7" fill="none" stroke="#39ff88" stroke-width="2" />
+                <circle cx="68" cy="44" r="7" fill="none" stroke="#39ff88" stroke-width="2" />
+                <path d="M40 24 L48 12 L64 12 L70 24" fill="none" stroke="#00e5ff" stroke-width="2" />
+                <circle cx="76" cy="18" r="2.5" fill="#ff8a3d" />
+              </svg>
+            </div>
+          </div>
+          <div class="project-body">
+            <p class="project-tag">ARDUINO · BLUETOOTH</p>
+            <h3>Bluetooth-Controlled Arduino Car</h3>
+            <p>A car built on an Arduino platform, controlled wirelessly over Bluetooth using a mobile app —
+              covering motor drivers, wireless comms, and basic control logic.</p>
+            <p class="project-link-hint">FULL BUILD LOG →</p>
+          </div>
+        </a>
+
+        <article class="project-card project-card-more">
+          <div class="project-thumb thumb-more">
+            <svg viewBox="0 0 100 60" width="60" aria-hidden="true">
+              <line x1="30" y1="30" x2="70" y2="30" stroke="#00e5ff" stroke-width="3" />
+              <line x1="50" y1="10" x2="50" y2="50" stroke="#00e5ff" stroke-width="3" />
+            </svg>
+          </div>
+          <div class="project-body">
+            <p class="project-tag">COMING SOON</p>
+            <h3>More builds in progress</h3>
+            <p>New projects get added here as they're finished — check back or follow along on GitHub and Instagram.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Designed &amp; built by N Devadharshan · <span id="year"></span></p>
+    <p class="footer-sub"></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience — N Devadharshan</title>
+  <meta name="description"
+    content="Experience of N Devadharshan — internship at PRAY LABS, School Robotics Expo, and self-directed robotics learning.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230a0e14%22/><path d=%22M20 50h20M60 50h20M50 20v20M50 60v20%22 stroke=%22%2300e5ff%22 stroke-width=%226%22/><circle cx=%2250%22 cy=%2250%22 r=%2210%22 fill=%22none%22 stroke=%22%2339ff88%22 stroke-width=%226%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <canvas id="circuit-bg"></canvas>
+
+  <svg id="spine" width="40" viewBox="0 0 40 100" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="20" y1="0" x2="20" y2="100" stroke="url(#spineGrad)" stroke-width="1.5" />
+    <defs>
+      <linearGradient id="spineGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.05" />
+        <stop offset="50%" stop-color="#00e5ff" stop-opacity="0.5" />
+        <stop offset="100%" stop-color="#39ff88" stop-opacity="0.4" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <header id="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-bracket">&lt;</span>ND<span class="logo-bracket">/&gt;</span>
+      </a>
+      <nav id="nav-links">
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="experience.html" class="nav-active">Experience</a>
+        <a href="projects.html">Projects</a>
+        <a href="certificates.html">Certificates</a>
+        <a href="contact.html">Contact</a>
+        <a href="assets/resume.pdf" class="nav-resume" download>Resume ↓</a>
+      </nav>
+      <button id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience" class="section">
+      <div class="section-head">
+        <span class="designator">U4</span>
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <p class="timeline-org">PRAY LABS, Tiruvannamalai</p>
+            <p class="timeline-role">Intern</p>
+            <p class="timeline-desc">Completed an internship gaining hands-on exposure to robotics and electronics
+              fundamentals.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <p class="timeline-org">School Robotics Expo</p>
+            <p class="timeline-role">Alumni Contributor</p>
+            <p class="timeline-desc">Returned to my school's Robotics Expo as an alumnus to showcase projects and
+              support current students.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-content">
+            <p class="timeline-org">Self-directed Learning</p>
+            <p class="timeline-role">Robotics Fundamentals</p>
+            <p class="timeline-desc">Completed foundational robotics courses on Udemy and Coursera, building a base in
+              electronics and control systems.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Designed &amp; built by N Devadharshan · <span id="year"></span></p>
+    <p class="footer-sub"></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
