@@ -83,19 +83,16 @@ if (GITHUB_USERNAME) {
 }
 
 // ============================================================
-// EmailJS configuration
-// ============================================================
-const EMAILJS_PUBLIC_KEY  = 'Ck0ol0Oe6KG1DID9x';
-const EMAILJS_SERVICE_ID  = 'service_x9bg4us';
-const EMAILJS_TEMPLATE_ID = 'template_h7k8ktg';
-
-emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-
-// ============================================================
-// Contact form — sends directly via EmailJS, no redirect
+// EmailJS configuration & Contact Form
 // ============================================================
 const form = document.getElementById('contact-form');
-if (form) {
+if (form && typeof emailjs !== 'undefined') {
+  const EMAILJS_PUBLIC_KEY  = 'Ck0ol0Oe6KG1DID9x';
+  const EMAILJS_SERVICE_ID  = 'service_x9bg4us';
+  const EMAILJS_TEMPLATE_ID = 'template_h7k8ktg';
+  
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
   const formStatus = document.getElementById('form-status');
   const submitBtn  = form.querySelector('button[type="submit"]');
 
