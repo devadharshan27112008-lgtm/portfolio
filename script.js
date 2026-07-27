@@ -47,8 +47,10 @@ navLinks.querySelectorAll('a').forEach(link => {
 const GITHUB_USERNAME = 'devadharshan27112008-lgtm';
 if (GITHUB_USERNAME) {
   const url = `https://github.com/${GITHUB_USERNAME}`;
-  document.getElementById('hero-github').href = url;
-  document.getElementById('contact-github').href = url;
+  const heroGithub = document.getElementById('hero-github');
+  const contactGithub = document.getElementById('contact-github');
+  if (heroGithub) heroGithub.href = url;
+  if (contactGithub) contactGithub.href = url;
 
   // Fetch last update time from GitHub API
   fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/portfolio/commits/main`)
@@ -57,6 +59,8 @@ if (GITHUB_USERNAME) {
       throw new Error('Network response was not ok.');
     })
     .then(data => {
+      const lastUpdated = document.getElementById('last-updated');
+      if (!lastUpdated) return;
       if (data && data.commit && data.commit.committer && data.commit.committer.date) {
         const commitDate = new Date(data.commit.committer.date);
         const formattedDate = commitDate.toLocaleString(undefined, {
@@ -66,14 +70,15 @@ if (GITHUB_USERNAME) {
           hour: '2-digit',
           minute: '2-digit'
         });
-        document.getElementById('last-updated').textContent = formattedDate;
+        lastUpdated.textContent = formattedDate;
       } else {
-        document.getElementById('last-updated').textContent = 'Recently';
+        lastUpdated.textContent = 'Recently';
       }
     })
     .catch(error => {
       console.error('Error fetching last commit:', error);
-      document.getElementById('last-updated').textContent = 'Recently';
+      const lastUpdated = document.getElementById('last-updated');
+      if (lastUpdated) lastUpdated.textContent = 'Recently';
     });
 }
 
@@ -89,49 +94,52 @@ emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 // ============================================================
 // Contact form — sends directly via EmailJS, no redirect
 // ============================================================
-const form      = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
-const submitBtn  = form.querySelector('button[type="submit"]');
+const form = document.getElementById('contact-form');
+if (form) {
+  const formStatus = document.getElementById('form-status');
+  const submitBtn  = form.querySelector('button[type="submit"]');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-  const name    = form.name.value.trim();
-  const email   = form.email.value.trim();
-  const message = form.message.value.trim();
+    const name    = form.name.value.trim();
+    const email   = form.email.value.trim();
+    const message = form.message.value.trim();
 
-  // Lock UI while sending
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending\u2026';
-  setStatus('', '');
+    // Lock UI while sending
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending\u2026';
+    setStatus('', '');
 
-  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-    subject:    `Portfolio contact from ${name}`,
-    name:       name,
-    from_name:  name,
-    from_email: email,
-    reply_to:   email,
-    message:    message,
-    to_email:   'devadharshan27112008@gmail.com',
-  })
-  .then(() => {
-    setStatus("Message sent! I'll get back to you soon.", 'success');
-    form.reset();
-  })
-  .catch((err) => {
-    console.error('EmailJS error:', err);
-    setStatus('Something went wrong. Please email directly.', 'error');
-  })
-  .finally(() => {
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Send Message';
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      subject:    `Portfolio contact from ${name}`,
+      name:       name,
+      from_name:  name,
+      from_email: email,
+      reply_to:   email,
+      message:    message,
+      to_email:   'devadharshan27112008@gmail.com',
+    })
+    .then(() => {
+      setStatus("Message sent! I'll get back to you soon.", 'success');
+      form.reset();
+    })
+    .catch((err) => {
+      console.error('EmailJS error:', err);
+      setStatus('Something went wrong. Please email directly.', 'error');
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    });
   });
-});
 
-
-function setStatus(msg, type) {
-  formStatus.textContent = msg;
-  formStatus.className = 'form-note' + (type ? ' form-note--' + type : '');
+  function setStatus(msg, type) {
+    if (formStatus) {
+      formStatus.textContent = msg;
+      formStatus.className = 'form-note' + (type ? ' form-note--' + type : '');
+    }
+  }
 }
 
 // ============================================================
