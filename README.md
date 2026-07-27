@@ -45,7 +45,7 @@ folders listed above and they'll appear automatically, no code changes needed.
 4. **Resume** — once ready, save it as `assets/resume.pdf`
 5. **GitHub link** — open `script.js`, find `GITHUB_USERNAME = ''` near the top, and put your GitHub username in the quotes. This updates both the "GitHub" links on the page automatically.
 6. **Certificates** — save your certificate images into `assets/certs/` using these exact filenames (JPG or PNG both work, just keep the name and extension matching, or update the `data-cert-src`/`src` in `index.html` to match your extension):
-   - `internship-pray-labs.jpg` — the PRAY LABS internship letter (portrait)
+   - `internship-praya-labs.jpg` — the PRAYA LABS internship letter (portrait)
    - `udemy-robotics.jpg` — Udemy course certificate (landscape)
    - `coursera-robotics.jpg` — Coursera course certificate (landscape)
 
