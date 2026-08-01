@@ -35,10 +35,39 @@ function syncLightboxSrc(img) {
 }
 
 // ============================================================
-// Footer year
+// Footer year & Last Updated
 // ============================================================
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+const GITHUB_USERNAME = 'devadharshan27112008-lgtm';
+fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/portfolio/commits/main`)
+  .then(response => {
+    if (response.ok) return response.json();
+    throw new Error('Network response was not ok.');
+  })
+  .then(data => {
+    const lastUpdated = document.getElementById('last-updated');
+    if (!lastUpdated) return;
+    if (data && data.commit && data.commit.committer && data.commit.committer.date) {
+      const commitDate = new Date(data.commit.committer.date);
+      const formattedDate = commitDate.toLocaleString(undefined, {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      lastUpdated.textContent = formattedDate;
+    } else {
+      lastUpdated.textContent = 'Recently';
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching last commit:', error);
+    const lastUpdated = document.getElementById('last-updated');
+    if (lastUpdated) lastUpdated.textContent = 'Recently';
+  });
 
 // ============================================================
 // Mobile nav toggle
