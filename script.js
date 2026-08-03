@@ -302,3 +302,32 @@ if (spine) {
   requestAnimationFrame(frame);
   if (reduceMotion) frame(0); // draw once, static
 })();
+
+// ============================================================
+// Update section counts dynamically
+// ============================================================
+(function updateCounts() {
+  const projectCountEl = document.getElementById('project-count');
+  const certCountEl = document.getElementById('cert-count');
+
+  if (projectCountEl) {
+    const total = projectCountEl.getAttribute('data-total');
+    if (total) {
+      projectCountEl.textContent = total;
+    } else {
+      const projectCards = document.querySelectorAll('#projects .project-card');
+      projectCountEl.textContent = projectCards.length;
+    }
+  }
+  
+  if (certCountEl) {
+    const total = certCountEl.getAttribute('data-total');
+    if (total) {
+      certCountEl.textContent = total;
+    } else {
+      const certCards = document.querySelectorAll('#certificates .cert-card');
+      certCountEl.textContent = certCards.length;
+    }
+  }
+})();
+

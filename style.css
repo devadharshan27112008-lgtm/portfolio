@@ -215,6 +215,19 @@ main, header, footer { position: relative; z-index: 2; }
   margin-left: 8px;
 }
 
+.section-count {
+  font-family: var(--font-mono);
+  font-size: 0.5em;
+  color: var(--text-dim);
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  font-weight: normal;
+  background: var(--bg-panel-2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
 .chip-label {
   font-family: var(--font-mono);
   font-size: 0.8rem;
