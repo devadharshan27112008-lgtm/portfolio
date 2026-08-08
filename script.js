@@ -87,20 +87,20 @@ if (GITHUB_USERNAME) {
 // ============================================================
 const form = document.getElementById('contact-form');
 if (form && typeof emailjs !== 'undefined') {
-  const EMAILJS_PUBLIC_KEY  = 'Ck0ol0Oe6KG1DID9x';
-  const EMAILJS_SERVICE_ID  = 'service_x9bg4us';
+  const EMAILJS_PUBLIC_KEY = 'Ck0ol0Oe6KG1DID9x';
+  const EMAILJS_SERVICE_ID = 'service_x9bg4us';
   const EMAILJS_TEMPLATE_ID = 'template_h7k8ktg';
-  
+
   emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
   const formStatus = document.getElementById('form-status');
-  const submitBtn  = form.querySelector('button[type="submit"]');
+  const submitBtn = form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const name    = form.name.value.trim();
-    const email   = form.email.value.trim();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
     const message = form.message.value.trim();
 
     // Lock UI while sending
@@ -109,26 +109,26 @@ if (form && typeof emailjs !== 'undefined') {
     setStatus('', '');
 
     emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      subject:    `Portfolio contact from ${name}`,
-      name:       name,
-      from_name:  name,
+      subject: `Portfolio contact from ${name}`,
+      name: name,
+      from_name: name,
       from_email: email,
-      reply_to:   email,
-      message:    message,
-      to_email:   'devadharshan27112008@gmail.com',
+      reply_to: email,
+      message: message,
+      to_email: 'dev.ecetech@gmail.com',
     })
-    .then(() => {
-      setStatus("Message sent! I'll get back to you soon.", 'success');
-      form.reset();
-    })
-    .catch((err) => {
-      console.error('EmailJS error:', err);
-      setStatus('Something went wrong. Please email directly.', 'error');
-    })
-    .finally(() => {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
-    });
+      .then(() => {
+        setStatus("Message sent! I'll get back to you soon.", 'success');
+        form.reset();
+      })
+      .catch((err) => {
+        console.error('EmailJS error:', err);
+        setStatus('Something went wrong. Please email directly.', 'error');
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      });
   });
 
   function setStatus(msg, type) {
@@ -319,7 +319,7 @@ if (spine) {
       projectCountEl.textContent = projectCards.length;
     }
   }
-  
+
   if (certCountEl) {
     const total = certCountEl.getAttribute('data-total');
     if (total) {
