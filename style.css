@@ -179,7 +179,7 @@ footer {
   padding-bottom: 2px;
 }
 
-.nav-resume {
+.nav-Devadharshan_Resume {
   color: var(--bg-deep) !important;
   background: var(--trace-green);
   padding: 7px 14px;
@@ -187,7 +187,7 @@ footer {
   font-weight: 600;
 }
 
-.nav-resume:hover {
+.nav-Devadharshan_Resume:hover {
   color: var(--bg-deep) !important;
   background: var(--trace-cyan);
 }

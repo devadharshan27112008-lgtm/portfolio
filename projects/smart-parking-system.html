@@ -1,175 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Parking System — N Devadharshan</title>
-<meta name="description" content="Build log for the Smart Parking System — ESP32, Next.js, Redis, and simulated payment gateway.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230a0e14%22/><path d=%22M20 50h20M60 50h20M50 20v20M50 60v20%22 stroke=%22%2300e5ff%22 stroke-width=%226%22/><circle cx=%2250%22 cy=%2250%22 r=%2210%22 fill=%22none%22 stroke=%22%2339ff88%22 stroke-width=%226%22/></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css">
-<script>
-function smartImage(img) {
-  var exts = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG', 'WEBP'];
-  var tried = (img.getAttribute('data-tried') || '').split(',').filter(Boolean);
-  var base = img.getAttribute('data-base');
-  for (var i = 0; i < exts.length; i++) {
-    if (tried.indexOf(exts[i]) === -1) {
-      tried.push(exts[i]);
-      img.setAttribute('data-tried', tried.join(','));
-      img.src = base + '.' + exts[i];
-      return;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Parking System — N Devadharshan</title>
+  <meta name="description"
+    content="Build log for the Smart Parking System — ESP32, Next.js, Redis, and simulated payment gateway.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%230a0e14%22/><path d=%22M20 50h20M60 50h20M50 20v20M50 60v20%22 stroke=%22%2300e5ff%22 stroke-width=%226%22/><circle cx=%2250%22 cy=%2250%22 r=%2210%22 fill=%22none%22 stroke=%22%2339ff88%22 stroke-width=%226%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <script>
+    function smartImage(img) {
+      var exts = ['jpg', 'jpeg', 'png', 'webp', 'JPG', 'JPEG', 'PNG', 'WEBP'];
+      var tried = (img.getAttribute('data-tried') || '').split(',').filter(Boolean);
+      var base = img.getAttribute('data-base');
+      for (var i = 0; i < exts.length; i++) {
+        if (tried.indexOf(exts[i]) === -1) {
+          tried.push(exts[i]);
+          img.setAttribute('data-tried', tried.join(','));
+          img.src = base + '.' + exts[i];
+          return;
+        }
+      }
+      if (img.getAttribute('data-fallback') === 'hide') {
+        img.style.display = 'none';
+      } else if (img.parentElement) {
+        img.parentElement.classList.add('no-photo');
+      }
     }
-  }
-  if (img.getAttribute('data-fallback') === 'hide') {
-    img.style.display = 'none';
-  } else if (img.parentElement) {
-    img.parentElement.classList.add('no-photo');
-  }
-}
-</script>
+  </script>
 
 </head>
+
 <body>
 
-<header id="navbar">
-  <div class="nav-inner">
-    <a class="logo" href="../index.html#hero">
-      <span class="logo-bracket">&lt;</span>ND<span class="logo-bracket">/&gt;</span>
-    </a>
-    <nav id="nav-links">
-      <a href="../index.html#about">About</a>
-      <a href="../index.html#skills">Skills</a>
-      <a href="../index.html#experience">Experience</a>
-      <a href="../index.html#projects" class="nav-active">Projects</a>
-      <a href="../certificates.html">Certificates</a>
-      <a href="../index.html#contact">Contact</a>
-      <a href="../assets/resume.pdf" class="nav-resume" download>Resume ↓</a>
-    </nav>
-    <button id="nav-toggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<main class="project-page-main">
-
-  <p class="back-link"><span class="back-link-inner">← <a href="../projects.html">Back to Projects</a></span></p>
-
-  <!-- ============ PROJECT HERO ============ -->
-  <section class="project-hero">
-    <span class="designator">U5·03</span>
-    <h1>Smart Parking System</h1>
-    <div class="project-badges">
-      <span class="project-badge">ESP32</span>
-      <span class="project-badge">NEXT.JS</span>
-      <span class="project-badge">REDIS</span>
-      <span class="project-badge">IoT</span>
-    </div>
-    <p class="project-hero-desc">
-      A complete full-stack IoT parking solution featuring an ESP32 hardware controller, a Next.js web application for real-time monitoring, and a serverless Upstash Redis database for shared state. It includes dynamic pricing logic and a simulated test-mode payment gateway for card and UPI checkouts.
-    </p>
-    <div style="margin-top: 1.5rem;">
-      <a href="../assets/projects/smart-parking-system/smart-parking-documentation.pdf" download style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--trace-cyan); color: var(--bg-main); padding: 8px 16px; border-radius: 6px; text-decoration: none; font-family: var(--font-mono); font-weight: 600; font-size: 0.85rem; transition: opacity 0.2s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-        Download Documentation PDF ↓
+  <header id="navbar">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html#hero">
+        <span class="logo-bracket">&lt;</span>ND<span class="logo-bracket">/&gt;</span>
       </a>
-    </div>
-  </section>
-
-  <!-- ============ OVERVIEW ============ -->
-  <section class="detail-section">
-    <div class="detail-section-head">
-      <h2>Architecture Overview</h2>
-    </div>
-    <p class="detail-body-text">
-      The system is built on a modern serverless architecture. The <strong>ESP32 Device</strong> reads ultrasonic occupancy sensors to determine slot availability and calculates pricing based on parking duration. It also controls the physical gate and an LCD display.
-    </p>
-    <p class="detail-body-text" style="margin-top: 1rem;">
-      The <strong>Next.js Website</strong> serves as the frontend, providing a public status page for drivers to view live availability and pay their dues. It also includes an owner dashboard for managing pricing and viewing payment history. The state is synchronized across the device and website using an <strong>Upstash Redis</strong> database.
-    </p>
-  </section>
-
-  <!-- ============ COMPONENTS ============ -->
-  <section class="detail-section">
-    <div class="detail-section-head">
-      <h2>System Components</h2>
-    </div>
-    <div class="components-list">
-      <div class="component-item">
-        <h4>ESP32 Microcontroller</h4>
-        <p>The core hardware unit. It polls ultrasonic sensors, computes prices, POSTs status to the API every 2 seconds, and controls the servo gate and LCD display.</p>
-      </div>
-      <div class="component-item">
-        <h4>Next.js API & Frontend</h4>
-        <p>Provides serverless API routes (`/api/report`, `/api/status`, `/api/pay`) that act as a bridge between the hardware and the Redis database. Hosts the public payment UI and admin portal.</p>
-      </div>
-      <div class="component-item">
-        <h4>Upstash Redis</h4>
-        <p>Holds the shared state: slot status, current pricing rates, pending payment confirmations, and order history.</p>
-      </div>
-      <div class="component-item">
-        <h4>Simulated Payment Gateway</h4>
-        <p>A realistic test-mode checkout flow that supports simulated Card and UPI transactions. It mirrors a real 2-step gateway (create order -> confirm order) with an ~80% approval rate.</p>
-      </div>
-      <div class="component-item">
-        <h4>Ultrasonic Sensors (HC-SR04)</h4>
-        <p>Used to detect the presence of vehicles in the parking slots.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ GALLERY ============ -->
-  <section class="detail-section">
-    <div class="detail-section-head">
-      <h2>Hardware & Prototype Gallery</h2>
-    </div>
-    <p class="detail-body-text" style="margin-bottom: 1.5rem;">
-      Photos of the breadboard prototype showing the ESP32, HC-SR04 sensors, LCD, and servo motor setup.
-    </p>
-    
-    <div class="detail-gallery">
-      <button type="button" class="gallery-tile" data-lightbox-src="../assets/projects/smart-parking-system/smart-parking-1.jpg" data-lightbox-title="Smart Parking System prototype setup">
-        <img src="../assets/projects/smart-parking-system/smart-parking-1.jpg" data-base="../assets/projects/smart-parking-system/smart-parking-1" data-fallback="hide" alt="Smart Parking System prototype setup" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
-      </button>
-      <button type="button" class="gallery-tile" data-lightbox-src="../assets/projects/smart-parking-system/smart-parking-2.jpg" data-lightbox-title="ESP32 and Ultrasonic sensor close-up">
-        <img src="../assets/projects/smart-parking-system/smart-parking-2.jpg" data-base="../assets/projects/smart-parking-system/smart-parking-2" data-fallback="hide" alt="ESP32 and Ultrasonic sensor close-up" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
-      </button>
-      <button type="button" class="gallery-tile" data-lightbox-src="../assets/projects/smart-parking-system/smart-parking-3.jpg" data-lightbox-title="LCD displaying parking status">
-        <img src="../assets/projects/smart-parking-system/smart-parking-3.jpg" data-base="../assets/projects/smart-parking-system/smart-parking-3" data-fallback="hide" alt="LCD displaying parking status" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
+      <nav id="nav-links">
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#projects" class="nav-active">Projects</a>
+        <a href="../certificates.html">Certificates</a>
+        <a href="../index.html#contact">Contact</a>
+        <a href="../assets/Devadharshan_Resume.pdf" class="nav-Devadharshan_Resume" download>Devadharshan_Resume ↓</a>
+      </nav>
+      <button id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
       </button>
     </div>
-  </section>
+  </header>
 
-  <!-- ============ VIDEO DEMO ============ -->
-  <section class="detail-section">
-    <div class="detail-section-head">
-      <h2>Video Demonstration</h2>
+  <main class="project-page-main">
+
+    <p class="back-link"><span class="back-link-inner">← <a href="../projects.html">Back to Projects</a></span></p>
+
+    <!-- ============ PROJECT HERO ============ -->
+    <section class="project-hero">
+      <span class="designator">U5·03</span>
+      <h1>Smart Parking System</h1>
+      <div class="project-badges">
+        <span class="project-badge">ESP32</span>
+        <span class="project-badge">NEXT.JS</span>
+        <span class="project-badge">REDIS</span>
+        <span class="project-badge">IoT</span>
+      </div>
+      <p class="project-hero-desc">
+        A complete full-stack IoT parking solution featuring an ESP32 hardware controller, a Next.js web application for
+        real-time monitoring, and a serverless Upstash Redis database for shared state. It includes dynamic pricing
+        logic and a simulated test-mode payment gateway for card and UPI checkouts.
+      </p>
+      <div style="margin-top: 1.5rem;">
+        <a href="../assets/projects/smart-parking-system/smart-parking-documentation.pdf" download
+          style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--trace-cyan); color: var(--bg-main); padding: 8px 16px; border-radius: 6px; text-decoration: none; font-family: var(--font-mono); font-weight: 600; font-size: 0.85rem; transition: opacity 0.2s ease;"
+          onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+          Download Documentation PDF ↓
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ OVERVIEW ============ -->
+    <section class="detail-section">
+      <div class="detail-section-head">
+        <h2>Architecture Overview</h2>
+      </div>
+      <p class="detail-body-text">
+        The system is built on a modern serverless architecture. The <strong>ESP32 Device</strong> reads ultrasonic
+        occupancy sensors to determine slot availability and calculates pricing based on parking duration. It also
+        controls the physical gate and an LCD display.
+      </p>
+      <p class="detail-body-text" style="margin-top: 1rem;">
+        The <strong>Next.js Website</strong> serves as the frontend, providing a public status page for drivers to view
+        live availability and pay their dues. It also includes an owner dashboard for managing pricing and viewing
+        payment history. The state is synchronized across the device and website using an <strong>Upstash Redis</strong>
+        database.
+      </p>
+    </section>
+
+    <!-- ============ COMPONENTS ============ -->
+    <section class="detail-section">
+      <div class="detail-section-head">
+        <h2>System Components</h2>
+      </div>
+      <div class="components-list">
+        <div class="component-item">
+          <h4>ESP32 Microcontroller</h4>
+          <p>The core hardware unit. It polls ultrasonic sensors, computes prices, POSTs status to the API every 2
+            seconds, and controls the servo gate and LCD display.</p>
+        </div>
+        <div class="component-item">
+          <h4>Next.js API & Frontend</h4>
+          <p>Provides serverless API routes (`/api/report`, `/api/status`, `/api/pay`) that act as a bridge between the
+            hardware and the Redis database. Hosts the public payment UI and admin portal.</p>
+        </div>
+        <div class="component-item">
+          <h4>Upstash Redis</h4>
+          <p>Holds the shared state: slot status, current pricing rates, pending payment confirmations, and order
+            history.</p>
+        </div>
+        <div class="component-item">
+          <h4>Simulated Payment Gateway</h4>
+          <p>A realistic test-mode checkout flow that supports simulated Card and UPI transactions. It mirrors a real
+            2-step gateway (create order -> confirm order) with an ~80% approval rate.</p>
+        </div>
+        <div class="component-item">
+          <h4>Ultrasonic Sensors (HC-SR04)</h4>
+          <p>Used to detect the presence of vehicles in the parking slots.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="detail-section">
+      <div class="detail-section-head">
+        <h2>Hardware & Prototype Gallery</h2>
+      </div>
+      <p class="detail-body-text" style="margin-bottom: 1.5rem;">
+        Photos of the breadboard prototype showing the ESP32, HC-SR04 sensors, LCD, and servo motor setup.
+      </p>
+
+      <div class="detail-gallery">
+        <button type="button" class="gallery-tile"
+          data-lightbox-src="../assets/projects/smart-parking-system/smart-parking-1.jpg"
+          data-lightbox-title="Smart Parking System prototype setup">
+          <img src="../assets/projects/smart-parking-system/smart-parking-1.jpg"
+            data-base="../assets/projects/smart-parking-system/smart-parking-1" data-fallback="hide"
+            alt="Smart Parking System prototype setup" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
+        </button>
+        <button type="button" class="gallery-tile"
+          data-lightbox-src="../assets/projects/smart-parking-system/smart-parking-2.jpg"
+          data-lightbox-title="ESP32 and Ultrasonic sensor close-up">
+          <img src="../assets/projects/smart-parking-system/smart-parking-2.jpg"
+            data-base="../assets/projects/smart-parking-system/smart-parking-2" data-fallback="hide"
+            alt="ESP32 and Ultrasonic sensor close-up" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
+        </button>
+        <button type="button" class="gallery-tile"
+          data-lightbox-src="../assets/projects/smart-parking-system/smart-parking-3.jpg"
+          data-lightbox-title="LCD displaying parking status">
+          <img src="../assets/projects/smart-parking-system/smart-parking-3.jpg"
+            data-base="../assets/projects/smart-parking-system/smart-parking-3" data-fallback="hide"
+            alt="LCD displaying parking status" onerror="smartImage(this)" onload="syncLightboxSrc(this)">
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ VIDEO DEMO ============ -->
+    <section class="detail-section">
+      <div class="detail-section-head">
+        <h2>Video Demonstration</h2>
+      </div>
+      <div style="border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--bg-panel-2);">
+        <video src="../assets/projects/smart-parking-system/smart-parking-demo.mp4" controls preload="metadata"
+          style="width: 100%; display: block; max-height: 500px; object-fit: contain;">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <!-- Image lightbox viewer -->
+    <div id="img-lightbox" class="lightbox" hidden>
+      <button type="button" class="lightbox-close" id="img-lightbox-close" aria-label="Close image viewer">✕</button>
+      <div class="lightbox-inner">
+        <img id="img-lightbox-img" src="" alt="">
+        <p id="img-lightbox-title" class="lightbox-title"></p>
+      </div>
     </div>
-    <div style="border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--bg-panel-2);">
-      <video src="../assets/projects/smart-parking-system/smart-parking-demo.mp4" controls preload="metadata" style="width: 100%; display: block; max-height: 500px; object-fit: contain;">
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  </section>
 
-  <!-- Image lightbox viewer -->
-  <div id="img-lightbox" class="lightbox" hidden>
-    <button type="button" class="lightbox-close" id="img-lightbox-close" aria-label="Close image viewer">✕</button>
-    <div class="lightbox-inner">
-      <img id="img-lightbox-img" src="" alt="">
-      <p id="img-lightbox-title" class="lightbox-title"></p>
-    </div>
-  </div>
+  </main>
 
-</main>
+  <footer>
+    <p>Designed &amp; built by N Devadharshan · <span id="year"></span></p>
+    <p class="footer-sub">Last updated: <span id="last-updated">checking…</span></p>
+  </footer>
 
-<footer>
-  <p>Designed &amp; built by N Devadharshan · <span id="year"></span></p>
-  <p class="footer-sub">Last updated: <span id="last-updated">checking…</span></p>
-</footer>
-
-<script src="../assets/js/project-page.js"></script>
+  <script src="../assets/js/project-page.js"></script>
 </body>
+
 </html>

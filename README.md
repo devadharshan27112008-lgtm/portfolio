@@ -17,7 +17,7 @@ Built with plain HTML/CSS/JS — no framework, no build step, so it deploys anyw
 - `assets/projects/bluetooth-car/photo-1.jpg` … `photo-6.jpg` — **add Bluetooth Car build photos here** for the detail page gallery
 - `assets/circuits/moon-rover.png`, `bluetooth-car.png` — **add circuit diagrams/schematics here**
 - `assets/certs/` — put certificate images here, then link them in the Certificates section
-- `assets/resume.pdf` — **add your resume PDF here**; the "Resume ↓" button in the nav already points to it
+- `assets/Devadharshan_Resume.pdf` — **add your Devadharshan_Resume PDF here**; the "Devadharshan_Resume ↓" button in the nav already points to it
 
 ## Project detail pages
 Each project card on the homepage now opens a dedicated page in a new tab with: an overview, the
@@ -42,7 +42,7 @@ folders listed above and they'll appear automatically, no code changes needed.
 1. **Photo** — drop a photo into `assets/images/` named `profile.jpg`
 2. **Moon Rover gallery** — drop images into `assets/projects/` named `moon-rover-1.jpg`, `moon-rover-2.jpg`, `moon-rover-3.jpg`
 3. **Project detail photos & circuits** — see "Project detail pages" above
-4. **Resume** — once ready, save it as `assets/resume.pdf`
+4. **Devadharshan_Resume** — once ready, save it as `assets/Devadharshan_Resume.pdf`
 5. **GitHub link** — open `script.js`, find `GITHUB_USERNAME = ''` near the top, and put your GitHub username in the quotes. This updates both the "GitHub" links on the page automatically.
 6. **Certificates** — save your certificate images into `assets/certs/` using these exact filenames (JPG or PNG both work, just keep the name and extension matching, or update the `data-cert-src`/`src` in `index.html` to match your extension):
    - `internship-praya-labs.jpg` — the PRAYA LABS internship letter (portrait)
