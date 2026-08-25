@@ -17,7 +17,7 @@ Built with plain HTML/CSS/JS — no framework, no build step, so it deploys anyw
 - `assets/projects/bluetooth-car/photo-1.jpg` … `photo-6.jpg` — **add Bluetooth Car build photos here** for the detail page gallery
 - `assets/circuits/moon-rover.png`, `bluetooth-car.png` — **add circuit diagrams/schematics here**
 - `assets/certs/` — put certificate images here, then link them in the Certificates section
-- `assets/Devadharshan_Resume.pdf` — **add your Devadharshan_Resume PDF here**; the "Devadharshan_Resume ↓" button in the nav already points to it
+- `assets/Devadharshan_Resume.pdf` — **add your Devadharshan_Resume PDF here**; the "Resume ↓" button in the nav already points to it
 
 ## Project detail pages
 Each project card on the homepage now opens a dedicated page in a new tab with: an overview, the
