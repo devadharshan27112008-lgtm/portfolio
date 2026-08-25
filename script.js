@@ -27,19 +27,22 @@ function smartImage(img) {
 // ============================================================
 // Footer year
 // ============================================================
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // ============================================================
 // Mobile nav toggle
 // ============================================================
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
-});
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+}
 
 // ============================================================
 // GitHub username — update once, applies to header + contact links
@@ -52,33 +55,40 @@ if (GITHUB_USERNAME) {
   if (heroGithub) heroGithub.href = url;
   if (contactGithub) contactGithub.href = url;
 
-  // Fetch last update time from GitHub API
-  fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/portfolio/commits/main`)
-    .then(response => {
-      if (response.ok) return response.json();
-      throw new Error('Network response was not ok.');
-    })
+  // Fetch last update time from the portfolio repo specifically
+  const REPO_NAME = 'portfolio';
+  const formatDate = (isoStr) => new Date(isoStr).toLocaleString(undefined, {
+    year: 'numeric', month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  });
+
+  const setLastUpdated = (text) => {
+    const el = document.getElementById('last-updated');
+    if (el) el.textContent = text;
+  };
+
+  // Try main branch first, then master
+  fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/commits/main`)
+    .then(r => r.ok ? r.json() : Promise.reject('main-failed'))
     .then(data => {
-      const lastUpdated = document.getElementById('last-updated');
-      if (!lastUpdated) return;
       if (data && data.commit && data.commit.committer && data.commit.committer.date) {
-        const commitDate = new Date(data.commit.committer.date);
-        const formattedDate = commitDate.toLocaleString(undefined, {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit'
-        });
-        lastUpdated.textContent = formattedDate;
+        setLastUpdated(formatDate(data.commit.committer.date));
       } else {
-        lastUpdated.textContent = 'Recently';
+        return Promise.reject('no-date');
       }
     })
-    .catch(error => {
-      console.error('Error fetching last commit:', error);
-      const lastUpdated = document.getElementById('last-updated');
-      if (lastUpdated) lastUpdated.textContent = 'Recently';
+    .catch(() => {
+      // Try master branch
+      fetch(`https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/commits/master`)
+        .then(r => r.ok ? r.json() : Promise.reject('master-failed'))
+        .then(data => {
+          if (data && data.commit && data.commit.committer && data.commit.committer.date) {
+            setLastUpdated(formatDate(data.commit.committer.date));
+          } else {
+            setLastUpdated('Not pushed to GitHub yet');
+          }
+        })
+        .catch(() => setLastUpdated('Not pushed to GitHub yet'));
     });
 }
 
@@ -145,6 +155,7 @@ if (form && typeof emailjs !== 'undefined') {
 // ============================================================
 (function certLightbox() {
   const lightbox = document.getElementById('cert-lightbox');
+  if (!lightbox) return;
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxTitle = document.getElementById('lightbox-title');
   const closeBtn = document.getElementById('lightbox-close');

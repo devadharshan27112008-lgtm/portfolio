@@ -1029,7 +1029,7 @@ footer {
 .lightbox {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  z-index: 9999;
   background: rgba(6, 9, 13, 0.92);
   backdrop-filter: blur(6px);
   display: flex;
@@ -1218,6 +1218,8 @@ footer {
   color: var(--text-faint);
   font-family: var(--font-mono);
   font-size: 0.78rem;
+  position: relative;
+  z-index: 1;
 }
 
 footer p {
